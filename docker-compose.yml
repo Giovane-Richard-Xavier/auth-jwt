@@ -12,6 +12,9 @@ services:
       - .:/home/node/app
     depends_on:
       - db
+    environment:
+      - PORT=3000 
+      - ANOTHER_ENV_VAR=value
 
   db:
     build: .docker/postgres
