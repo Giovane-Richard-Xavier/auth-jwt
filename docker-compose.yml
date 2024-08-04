@@ -4,7 +4,7 @@ services:
   app:
     build: .
     entrypoint: .docker/entrypoint.sh
-    container_name: authentication-jwt
+    container_name: autentication-jwt
     ports:
       - '3000:3000'
       - '5555:5555'
@@ -13,15 +13,15 @@ services:
     depends_on:
       - db
 
-db:
-  build: .docker/postgres
-  container_name: authentication-jwt-db
-  restart: aways
-  tty: true
-  ports:
-    - '5432:5432'
-  volumes:
-    - .docker/dbdata:/var/lib/postgresql/data
-  environment:
-    - POSTGRES_PASSWORD=docker
-    - POSTGRES_DB=congonhasfacil
+  db:
+    build: .docker/postgres
+    container_name: autentication-jwt-db
+    restart: always
+    tty: true
+    ports:
+      - '5432:5432'
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=congonhasfacil
